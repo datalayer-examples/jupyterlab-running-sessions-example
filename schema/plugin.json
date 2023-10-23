@@ -1,0 +1,8 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "@datalayer/jupyterlab-running-sessions",
+  "description": "@datalayer/jupyterlab-running-sessions settings.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}
