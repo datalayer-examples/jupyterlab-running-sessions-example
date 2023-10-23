@@ -54,13 +54,13 @@ const plugin: JupyterFrontEndPlugin<IJupyterLabRunningSessions> = {
     }
     const runningSessions = new RunningSessions(runningSessionManagers, translator);
     commands.addCommand(command, {
-      caption: 'Show RunningSessions',
-      label: 'RunningSessions',
+      caption: 'Show Running Sessions',
+      label: 'Running Sessions',
       icon,
       execute: () => {
         const content = new JupyterLabRunningSessionsWidget({ runningSessions: runningSessions});
         const widget = new MainAreaWidget<JupyterLabRunningSessionsWidget>({ content });
-        widget.title.label = 'RunningSessions';
+        widget.title.label = 'Running Sessions';
         widget.title.icon = icon;
         app.shell.add(widget, 'main');
         tracker.add(widget);
