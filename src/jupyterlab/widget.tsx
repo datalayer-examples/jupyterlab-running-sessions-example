@@ -1,20 +1,20 @@
 import { ReactWidget } from '@jupyterlab/apputils';
-import { RunningSessions } from '@jupyterlab/running';
+import { IRunningSessionManagers } from '@jupyterlab/running';
 import RunningSessionsComponent from '../RunningSessions';
 import { RunningSessionsProps } from "./../RunningSessions";
 
 export class JupyterLabRunningSessionsWidget extends ReactWidget {
-  private _runningSessions: RunningSessions;
+  private _runningSessionManagers: IRunningSessionManagers;
   constructor(props: RunningSessionsProps) {
     super();
-    this._runningSessions = props.runningSessions;
+    this._runningSessionManagers = props.runningSessionManagers;
     this.addClass('dla-Container');
   }
 
   render(): JSX.Element {
     return (
       <>
-        <RunningSessionsComponent runningSessions={this._runningSessions}/>
+        <RunningSessionsComponent runningSessionManagers={this._runningSessionManagers}/>
       </>
     )
   }

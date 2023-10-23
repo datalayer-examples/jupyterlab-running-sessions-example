@@ -1,19 +1,35 @@
-// Pick only Lumino to avoid loading unneeded components/css.
+import { useState, useEffect } from "react";
 import { Lumino } from "@datalayer/jupyter-react/lib/jupyter/lumino/Lumino";
-import { RunningSessions } from '@jupyterlab/running';
+import { Box } from "@primer/react";
+import { IRunningSessionManagers, RunningSessions } from '@jupyterlab/running';
 
 export type RunningSessionsProps = {
-  runningSessions: RunningSessions;
+  runningSessionManagers: IRunningSessionManagers;
 }
 
 const JupyterLabRunningSessions = (props: RunningSessionsProps) => {
-  const { runningSessions } = props;
+  const { runningSessionManagers } = props;
+  const [runningSessions, setRunningSessions] = useState<RunningSessions>();
+  useEffect(() => {
+    const runningSessions = new RunningSessions(runningSessionManagers);
+    setRunningSessions(runningSessions);
+  }, [runningSessionManagers]);
   return (
     <div style={{margin: 10}}>
-      <h1>This is a 🪐 Lumino Widget displayed as a ⚛️ React.js Component 🎉.</h1>
-      <Lumino>
-        {runningSessions}
-      </Lumino>
+      <h1>This is a 🪐 Lumino Widget displayed as a ⚛️ React.js Component 🎉</h1>
+      { runningSessions &&
+        <Box
+          sx={{
+            '& .jp-RunningSessions': {
+              minHeight: 600
+            }
+          }}
+        >
+          <Lumino>
+            {runningSessions}
+          </Lumino>
+        </Box>
+      }
     </div>
   );
 }

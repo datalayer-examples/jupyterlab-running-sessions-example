@@ -3,8 +3,7 @@ import { JupyterFrontEnd, JupyterFrontEndPlugin, ILayoutRestorer } from '@jupyte
 import { MainAreaWidget, ICommandPalette, WidgetTracker } from '@jupyterlab/apputils';
 import { ISettingRegistry } from '@jupyterlab/settingregistry';
 import { ILauncher } from '@jupyterlab/launcher';
-import { ITranslator } from '@jupyterlab/translation';
-import { IRunningSessionManagers, RunningSessions } from '@jupyterlab/running';
+import { IRunningSessionManagers } from '@jupyterlab/running';
 import icon from '@datalayer/icons-react/data2/PartyPopperIconJupyterLab';
 import { JupyterLabRunningSessionsWidget } from './widget';
 
@@ -29,14 +28,13 @@ namespace CommandIDs {
 const plugin: JupyterFrontEndPlugin<IJupyterLabRunningSessions> = {
   id: '@datalayer/jupyterlab-running-sessions:plugin',
   autoStart: true,
-  requires: [ICommandPalette, IRunningSessionManagers, ITranslator],
+  requires: [ICommandPalette, IRunningSessionManagers],
   optional: [ISettingRegistry, ILauncher, ILayoutRestorer],
   provides: IJupyterLabRunningSessions,
   activate: (
     app: JupyterFrontEnd,
     palette: ICommandPalette,
     runningSessionManagers: IRunningSessionManagers,
-    translator: ITranslator,
     settingRegistry?: ISettingRegistry,
     launcher?: ILauncher,
     restorer?: ILayoutRestorer,
@@ -52,13 +50,12 @@ const plugin: JupyterFrontEndPlugin<IJupyterLabRunningSessions> = {
         name: () => 'jupyterlab-running-sessions',
       });
     }
-    const runningSessions = new RunningSessions(runningSessionManagers, translator);
     commands.addCommand(command, {
       caption: 'Show Running Sessions',
       label: 'Running Sessions',
       icon,
       execute: () => {
-        const content = new JupyterLabRunningSessionsWidget({ runningSessions: runningSessions});
+        const content = new JupyterLabRunningSessionsWidget({ runningSessionManagers });
         const widget = new MainAreaWidget<JupyterLabRunningSessionsWidget>({ content });
         widget.title.label = 'Running Sessions';
         widget.title.icon = icon;
