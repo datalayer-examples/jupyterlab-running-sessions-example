@@ -6,13 +6,13 @@
 
 > JupyterLab Running Sessions Example.
 
-Expose the `RunningSessions` of JupyterLab `Lumino` widget as a `React.js` component.
+Expose the `RunningSessions` of JupyterLab `Lumino` Widget as a `React.js` Component.
 
 <div align="center" style="text-align: center">
   <img alt="JupyterLab Running Sessions" src="https://datalayer-jupyter-examples.s3.amazonaws.com/jupyterlab-running-sessions.png" />
 </div>
 
-This is what it takes to show the Running Sessions in your React component.
+This is what it takes to show the Running Sessions in your React Components.
 
 ```tsx
 import { Lumino } from "@datalayer/jupyter-react/lib/jupyter/lumino/Lumino";
@@ -37,9 +37,15 @@ const JupyterLabRunningSessions = (props: RunningSessionsProps) => {
 export default JupyterLabRunningSessions;
 ```
 
+## TODO
+
+- [ ] JupyterLabApp
+- [ ] JupyterLabAppHeadless
+
 ## Develop
 
 ```bash
+yarn && yarn build
 pip install -e .[test]
 jupyter labextension develop . --overwrite
 jupyter labextension list

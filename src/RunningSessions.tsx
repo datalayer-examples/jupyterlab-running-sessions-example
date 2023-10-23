@@ -10,7 +10,7 @@ const JupyterLabRunningSessions = (props: RunningSessionsProps) => {
   const { runningSessions } = props;
   return (
     <div style={{margin: 10}}>
-      <h1>This is a 🪐 Lumino Widget displayed as a ⚛️ React.js component.</h1>
+      <h1>This is a 🪐 Lumino Widget displayed as a ⚛️ React.js Component 🎉.</h1>
       <Lumino>
         {runningSessions}
       </Lumino>
