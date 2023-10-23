@@ -9,7 +9,7 @@
 Expose the `RunningSessions` of JupyterLab `Lumino` Widget as a `React.js` Component.
 
 <div align="center" style="text-align: center">
-  <img alt="JupyterLab Running Sessions" src="https://datalayer-jupyter-examples.s3.amazonaws.com/jupyterlab-running-sessions.png" />
+  <img alt="JupyterLab Running Sessions" src="https://datalayer-jupyter-examples.s3.amazonaws.com/jupyterlab-running-sessions.png?v=2" />
 </div>
 
 This is what it takes to show the Running Sessions in your React Components.
