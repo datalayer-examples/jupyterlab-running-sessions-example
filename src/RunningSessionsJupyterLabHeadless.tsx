@@ -4,8 +4,9 @@ import { Jupyter, JupyterLabApp, JupyterLabAppAdapter } from '@datalayer/jupyter
 // import RunningSessions from './RunningSessions';
 
 import * as lightThemeExtension from '@jupyterlab/theme-light-extension';
+import * as runningExtension from '@jupyterlab/running-extension';
 import * as collaborationExtension from '@jupyter/collaboration-extension';
-import * as runningSessions from './jupyterlab/index';
+// import * as datalayerRunningSessions from './jupyterlab/index';
 
 const ThemeGlobalStyle = createGlobalStyle<any>`
   body {
@@ -25,8 +26,9 @@ const JupyterLabHeadless = () => {
       <JupyterLabApp
         extensions={[
           lightThemeExtension,
+          runningExtension,
           collaborationExtension,
-          runningSessions,
+//          datalayerRunningSessions,
         ]}
         headless={true}
         onJupyterLab={onJupyterLab}
