@@ -14,9 +14,10 @@ const mode = IS_PRODUCTION ? "production" : "development";
 const devtool = IS_PRODUCTION ? false : "inline-cheap-source-map";
 const minimize = IS_PRODUCTION ? true : false;
 const publicPath = IS_PRODUCTION ? "/static/jupyterlab_running_sessions/" : "http://localhost:3063/";
+const entry = process.env.HMR ? "./src/RunningSessionsAppHmr" : "./src/RunningSessionsApp";
 
 module.exports = {
-  entry: "./src/RunningSessionsApp",
+  entry,
   mode: mode,
   devServer: {
     port: 3063,

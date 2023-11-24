@@ -14,6 +14,7 @@ export class JupyterLabRunningSessionsWidget extends ReactWidget {
   render(): JSX.Element {
     return (
       <>
+        <>Running Sessions</>
         <RunningSessionsComponent runningSessionManagers={this._runningSessionManagers}/>
       </>
     )

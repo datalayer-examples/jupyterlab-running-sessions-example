@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import { Jupyter, JupyterLabApp, JupyterLabAppAdapter } from '@datalayer/jupyter-react';
-// import RunningSessions from './RunningSessions';
+import { Box, Label, Text, Link } from '@primer/react';
+import { PageHeader } from '@primer/react/drafts';
+import { GitPullRequestIcon } from '@primer/octicons-react';
+import { IRunningSessionManagers } from '@jupyterlab/running';
+import { Jupyter, JupyterLabApp } from '@datalayer/jupyter-react';
+import RunningSessions from './RunningSessions';
 
 import * as lightThemeExtension from '@jupyterlab/theme-light-extension';
 import * as runningExtension from '@jupyterlab/running-extension';
 import * as collaborationExtension from '@jupyter/collaboration-extension';
-// import * as datalayerRunningSessions from './jupyterlab/index';
+import * as datalayerRunningSessions from './jupyterlab/index';
 
 const ThemeGlobalStyle = createGlobalStyle<any>`
   body {
@@ -15,23 +19,51 @@ const ThemeGlobalStyle = createGlobalStyle<any>`
   }
 `
 
+const Header = () => (
+  <PageHeader>
+    <PageHeader.TitleArea>
+      <PageHeader.LeadingVisual>
+        <GitPullRequestIcon />
+      </PageHeader.LeadingVisual>
+      <PageHeader.Title>Title</PageHeader.Title>
+      <PageHeader.TrailingVisual>
+        <Label>Beta</Label>
+      </PageHeader.TrailingVisual>
+    </PageHeader.TitleArea>
+    <PageHeader.Description>
+      <Text sx={{fontSize: 1, color: 'fg.muted'}}>
+        <Link href="#" muted sx={{fontWeight: 'bold'}}>
+          echarles
+        </Link>{' '}
+        created this branch 4 days ago · 13 commits · updated today
+      </Text>
+    </PageHeader.Description>
+  </PageHeader>
+)
+
 const JupyterLabHeadless = () => {
-  const [_, setJupyterLabAppAdapter] = useState<JupyterLabAppAdapter>();
-  const onJupyterLab = (jupyterLabAppAdapter: JupyterLabAppAdapter) => {
-    setJupyterLabAppAdapter(jupyterLabAppAdapter);
+  const [plugin, setPlugin] = useState<IRunningSessionManagers>();
+  const onPlugin = (plugin: IRunningSessionManagers) => {
+    setPlugin(plugin);
   }
   return (
     <>
-      {/* jupyterLabAppAdapter && <RunningSessions/> */}
+      <Box m={3}>
+        <Header/>
+      </Box>
+      { plugin && <RunningSessions runningSessionManagers={plugin}/> }
       <JupyterLabApp
         extensions={[
           lightThemeExtension,
           runningExtension,
           collaborationExtension,
-//          datalayerRunningSessions,
+          datalayerRunningSessions,
         ]}
         headless={true}
-        onJupyterLab={onJupyterLab}
+        mimeExtensions={[]}
+        pluginId="@jupyterlab/running-extension:plugin"
+        PluginType={IRunningSessionManagers}
+        onPlugin={onPlugin}
       />
     </>
   )
