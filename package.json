@@ -1,8 +1,9 @@
 {
   "name": "@datalayer/jupyterlab-running-sessions",
   "version": "0.0.5",
-  "description": "🪐 JupyterLab Running Sessions.",
+  "description": "🪐 ⚛️ JupyterLab Running Sessions Example.",
   "keywords": [
+    "example",
     "jupyter",
     "jupyterlab",
     "jupyterlab-extension",
