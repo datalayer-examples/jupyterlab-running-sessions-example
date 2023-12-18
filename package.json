@@ -65,7 +65,7 @@
     "watch:src": "tsc -w"
   },
   "dependencies": {
-    "@datalayer/primer-addons": "0.8.1",
+    "@datalayer/jupyter-react": "0.8.1",
     "@jupyterlab/application": "4.0.3",
     "@jupyterlab/coreutils": "6.0.3",
     "@jupyterlab/running": "4.0.3",
