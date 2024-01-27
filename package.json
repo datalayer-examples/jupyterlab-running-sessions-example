@@ -65,7 +65,7 @@
     "watch:src": "tsc -w"
   },
   "dependencies": {
-    "@datalayer/jupyter-react": "0.9.1",
+    "@datalayer/jupyter-react": "0.9.4",
     "@jupyterlab/application": "4.1.0-beta.0",
     "@jupyterlab/coreutils": "6.1.0-beta.0",
     "@jupyterlab/running": "4.1.0-beta.0",
