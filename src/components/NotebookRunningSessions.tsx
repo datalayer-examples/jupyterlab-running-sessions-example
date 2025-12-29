@@ -65,12 +65,12 @@ export const JupyterLabHeadlessAppExample = () => {
           </div>
         }
         <JupyterLabApp
-          extensions={[
+          plugins={[
             lightThemeExtension,
             ipywidgetsExtension,
             plotlyExtension,
           ]}
-          mimeExtensions={[
+          mimeRenderers={[
             mimePlotlyExtension,
           ]}
           headless={true}
